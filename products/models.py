@@ -3,7 +3,7 @@ from django.utils.translation import ugettext as _
 
 # Create your models here.
 class Category(models.Model):
-    parent = models.ForeignKey('self', verbose_name=_('parent'), blank=True, ondelete=models.CASCADE)
+    parent = models.ForeignKey('self', verbose_name=_('parent'), blank=True, on_delete=models.CASCADE)
     title = models.CharField(_('title'), max_length=50)
     description = models.TextField(_('description'), blank=True),
     avator = models.ImageField(_('avator'), blank=True, upload_to='categories')
@@ -34,7 +34,7 @@ class Product(models.Model):
 
 
 class File(models.Model):
-    product = models.ForeignKey('Product', verbose_name=_('product'), ondelete=models.CASCADE)
+    product = models.ForeignKey('Product', verbose_name=_('product'), on_delete=models.CASCADE)
     title = models.CharField(_('title'), max_length=50)
     file = models.FileField(_('file'), upload_to='files/%Y/%m/%d/')
     is_enable = models.BooleanField(_('is enable'), default=True)
